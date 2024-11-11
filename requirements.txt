@@ -1,0 +1,14 @@
+fastapi
+uvicorn
+supabase
+html5lib
+pandas
+beautifulsoup4
+requests
+selenium
+pyttsx3
+Jinja2
+webdriver-manager
+multipart
+
+

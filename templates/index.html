@@ -1,0 +1,103 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Scraper</title>
+    <style>
+        #split-screen {
+            display: flex;
+            height: 100vh;
+            border: 1px solid #ccc;
+        }
+        #website, #html-content {
+            width: 50%;
+            overflow: auto;
+            border-left: 1px solid #ccc;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        #content {
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <h1>Web Scraper</h1>
+    <form id="scrape-form">
+        <label for="url">Website URL:</label><br>
+        <input type="text" id="url" name="url" placeholder="Enter website URL"><br><br>
+        <input type="button" value="View HTML Content" onclick="viewHtmlContent()">
+        <input type="button" value="Open Website" onclick="openWebsite()">
+    </form>
+
+    <div id="split-screen" style="display:none;">
+        <iframe id="website" src="" title="Website"></iframe>
+        <div id="html-content">
+            <h2>HTML Content</h2>
+            <pre id="content"></pre>
+        </div>
+    </div>
+
+    <script>
+        async function viewHtmlContent() {
+            const url = document.getElementById('url').value;
+            try {
+                const response = await fetch('/get_html_content/?url=' + encodeURIComponent(url));
+                if (response.ok) {
+                    const content = await response.text();
+                    document.getElementById('content').textContent = content;
+                } else {
+                    document.getElementById('content').textContent = 'Failed to fetch HTML content';
+                }
+            } catch (error) {
+                document.getElementById('content').textContent = 'Error: ' + error.message;
+            }
+        }
+
+        function openWebsite() {
+            const url = document.getElementById('url').value;
+            if (url) {
+                document.getElementById('website').src = url;
+                document.getElementById('split-screen').style.display = 'flex';
+            } else {
+                alert('Please enter a valid URL');
+            }
+        }
+
+        document.getElementById('website').addEventListener('load', function() {
+            const iframe = document.getElementById('website');
+            iframe.contentWindow.document.addEventListener('click', function(event) {
+                event.preventDefault();
+                const html = event.target.outerHTML;
+                document.getElementById('content').textContent = html;
+            });
+        });
+    </script>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Scraping Tool</title>
+    <link rel="stylesheet" href="/static/script.js"> <!-- Link to CSS -->
+</head>
+<body>
+    <div class="container">
+        <h1>Web Scraping Tool</h1>
+        <input type="text" id="urlInput" placeholder="Enter URL here">
+        <button onclick="loadWebsite()">Load Website</button>
+        <div id="webpageDisplay"></div>
+        <button onclick="scrapeData()">Scrape Data</button>
+    </div>
+
+    <script src="/static/script.js"></script> <!-- Link to JavaScript -->
+</body>
+</html>
